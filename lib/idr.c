@@ -41,8 +41,8 @@ int idr_alloc_u32(struct idr *idr, void *ptr, u32 *nextid,
 
 	if (WARN_ON_ONCE(radix_tree_is_internal_node(ptr)))
 		return -EINVAL;
-	if (WARN_ON_ONCE(!(idr->idr_rt.gfp_mask & ROOT_IS_IDR)))
-		idr->idr_rt.gfp_mask |= IDR_RT_MARKER;
+	if (WARN_ON_ONCE(!(idr->idr_rt.xa_flags & ROOT_IS_IDR)))
+		idr->idr_rt.xa_flags |= IDR_RT_MARKER;
 
 	id = (id < base) ? 0 : id - base;
 	radix_tree_iter_init(&iter, id);
@@ -242,7 +242,7 @@ void *idr_get_next_ul(struct idr *idr, unsigned long *nextid)
 			continue;
 		if (!radix_tree_deref_retry(entry))
 			break;
-		if (slot != (void *)&idr->idr_rt.rnode &&
+		if (slot != (void *)&idr->idr_rt.xa_head &&
 				entry != (void *)RADIX_TREE_INTERNAL_NODE)
 			break;
 		slot = radix_tree_iter_retry(&iter);
