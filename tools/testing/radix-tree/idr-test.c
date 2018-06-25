@@ -393,6 +393,7 @@ void ida_check_nomem(void)
  */
 void ida_check_conv_user(void)
 {
+#if 0
 	DEFINE_IDA(ida);
 	unsigned long i;
 
@@ -410,6 +411,7 @@ void ida_check_conv_user(void)
 		IDA_BUG_ON(&ida, id != i);
 	}
 	ida_destroy(&ida);
+#endif
 }
 
 void ida_check_random(void)
