@@ -70,8 +70,6 @@
 /* if low watermark of zones have reached, defer the refill in this window */
 #define ION_POOL_REFILL_DEFER_WINDOW_MS	10
 
-#define MAX_CLIENTS_NUM 16
-
 /**
  * struct ion_platform_heap - defines a heap in the given platform
  * @type:	type of the heap from ion_heap_type enum
@@ -147,9 +145,6 @@ struct ion_buffer {
 	struct sg_table *sg_table;
 	struct list_head attachments;
 	struct list_head vmas;
-	pid_t pid;
-	pid_t client_pids[MAX_CLIENTS_NUM];
-	int ref_cnt;
 	struct msm_iommu_data iommu_data;
 };
 
