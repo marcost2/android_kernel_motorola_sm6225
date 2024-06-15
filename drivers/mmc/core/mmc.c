@@ -705,7 +705,7 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
 			card->ext_csd.cmdq_depth = 0;
 		}
 		if (card->ext_csd.cmdq_support) {
-			pr_debug("%s: Command Queue supported depth %u\n",
+			pr_err("%s: Command Queue supported depth %u\n",
 				 mmc_hostname(card->host),
 				 card->ext_csd.cmdq_depth);
 		}

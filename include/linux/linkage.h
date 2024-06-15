@@ -87,6 +87,13 @@
 #endif
 #endif /* LINKER_SCRIPT */
 
+#ifndef ENTRY_ALIAS
+#define ENTRY_ALIAS(name)	\
+  .global name;		\
+  .type name,%function;	\
+  name:
+#endif 
+
 #ifndef WEAK
 #define WEAK(name)	   \
 	.weak name ASM_NL   \
