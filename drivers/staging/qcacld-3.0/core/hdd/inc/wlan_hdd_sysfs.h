@@ -178,6 +178,7 @@ void hdd_sysfs_create_adapter_root_obj(struct hdd_adapter *adapter);
  * Return: none
  */
 void hdd_sysfs_destroy_adapter_root_obj(struct hdd_adapter *adapter);
+#endif
 #else
 static inline
 void hdd_sysfs_create_adapter_root_obj(struct hdd_adapter *adapter)
@@ -188,5 +189,4 @@ static inline
 void hdd_sysfs_destroy_adapter_root_obj(struct hdd_adapter *adapter)
 {
 }
-#endif
 #endif

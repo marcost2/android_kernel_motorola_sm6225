@@ -291,6 +291,24 @@ enum WMI_RECORD_TYPE {
 	WMI_EVT = 2,
 };
 
+#else
+#define wmi_alert_rl(params...)
+#define wmi_err_rl(params...)
+#define wmi_warn_rl(params...)
+#define wmi_info_rl(params...)
+#define wmi_debug_rl(params...)
+
+#define wmi_alert(params...)
+#define wmi_err(params...)
+#define wmi_warn(params...)
+#define wmi_info(params...)
+#define wmi_debug(params...)
+
+#define wmi_nofl_alert(params...)
+#define wmi_nofl_err(params...) 
+#define wmi_nofl_warn(params...) 
+#define wmi_nofl_info(params...)
+#define wmi_nofl_debug(params...)
 #endif /*WMI_INTERFACE_EVENT_LOGGING */
 
 #ifdef WLAN_OPEN_SOURCE
