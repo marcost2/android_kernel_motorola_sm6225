@@ -902,7 +902,7 @@ static struct of_device_id fpsensor_of_match[] = {
     { .compatible = "qcom,fingerprint-gpio" },
     {}
 };
-//MODULE_DEVICE_TABLE(of, fpsensor_of_match);
+MODULE_DEVICE_TABLE(of, fpsensor_of_match);
 #endif
 
 static struct platform_driver fpsensor_driver = {
@@ -930,6 +930,7 @@ static int __init fpsensor_init(void)
 
     return status;
 }
+late_initcall(fpsensor_init);
 module_init(fpsensor_init);
 
 static void __exit fpsensor_exit(void)
