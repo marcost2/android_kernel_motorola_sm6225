@@ -1382,6 +1382,9 @@ static int nova_check_dt(struct device_node *np)
 			ret = -ENODEV;
 		}
 	}
+	else
+		if (PTR_ERR(panel) == -EPROBE_DEFER)
+			ret = PTR_ERR(panel);
 	return ret;
 }
 #endif
@@ -4508,7 +4511,7 @@ static void __exit nvt_driver_exit(void)
 	spi_unregister_driver(&nvt_spi_driver);
 }
 
-//late_initcall(nvt_driver_init);
+late_initcall(nvt_driver_init);
 module_init(nvt_driver_init);
 module_exit(nvt_driver_exit);
 
